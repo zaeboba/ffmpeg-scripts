@@ -18,7 +18,7 @@ for filename in ./*${VIDEO_EXT}; do
     for audio_folder in ./Sounds/*; do
         if [ -d "$audio_folder" ]; then
             audio_inputs="${audio_inputs} -i \"${audio_folder}/${file_name}${AUDIO_EXT}\""
-            audio_map="${audio_map} -map ${stream_count}"
+            audio_map="${audio_map} -map ${stream_count} -metadata:s:a:${stream_count} title=\"${audio_folder##*/}\""
             stream_count=$(expr $stream_count + 1)
         fi
     done
